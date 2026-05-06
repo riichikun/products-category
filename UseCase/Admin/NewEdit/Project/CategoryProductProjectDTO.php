@@ -37,7 +37,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class CategoryProductProjectDTO implements CategoryProductProjectInterface
 {
     /* Категория */
-    #[Assert\NotBlank]
+    //#[Assert\NotBlank]
     private CategoryProductUid $category;
 
     /* Профиль */

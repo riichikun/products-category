@@ -1,6 +1,6 @@
 # BaksDev Product Category
 
-[![Version](https://img.shields.io/badge/version-7.4.7-blue)](https://github.com/baks-dev/products-category/releases)
+[![Version](https://img.shields.io/badge/version-7.4.8-blue)](https://github.com/baks-dev/products-category/releases)
 ![php 8.4+](https://img.shields.io/badge/php-min%208.4-red.svg)
 [![packagist](https://img.shields.io/badge/packagist-green)](https://packagist.org/packages/baks-dev/products-category)
 

@@ -73,16 +73,38 @@ final class CategoryProductHandler extends AbstractHandler
             /* Подготовить данные по категории и профилю */
             $CategoryProductProjectDTO = $command->getProject();
 
+            $landings = $CategoryProductProjectDTO->getLanding()->filter(
+                function($item) {
+                    $header = $item->getHeader();
+                    $bottom = $item->getBottom();
+                    return false === empty($header) && false === empty($bottom);
+                },
+            );
+
+            /** Сохраняем объект без посадочных блоков */
+            if($landings->isEmpty())
+            {
+                $this->flush();
+
+                $this->messageDispatch
+                    ->addClearCacheOther('products-category')
+                    ->addClearCacheOther('products-product')
+                    ->addClearCacheOther('avito-board');
+
+                return true;
+            }
+
+
             $CategoryProductProjectDTO->setProfile($command->getProfile());
             $CategoryProductProjectDTO->setCategory($this->main->getCategory());
-
+            $CategoryProductProjectDTO->setLanding($landings);
 
             /* Проверить на существование CategoryProductProject */
 
             $ExistingCategoryProject = $this->getRepository(CategoryProductProject::class)
                 ->findOneBy([
                     'category' => $this->main->getCategory(),
-                    'profile' => $command->getProfile()
+                    'profile' => $command->getProfile(),
                 ]);
 
 
@@ -109,7 +131,6 @@ final class CategoryProductHandler extends AbstractHandler
         }
 
         $this->flush();
-
 
         /* Отправляем событие в шину  */
         $this->messageDispatch

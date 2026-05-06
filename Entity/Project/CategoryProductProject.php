@@ -81,6 +81,7 @@ class CategoryProductProject extends EntityState
 
         if($dto instanceof CategoryProductProjectInterface)
         {
+
             return parent::getDto($dto);
         }
 

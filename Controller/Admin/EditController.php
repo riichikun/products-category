@@ -50,10 +50,8 @@ final class EditController extends AbstractController
         ProjectProfileLandingsInterface $profileLandings,
     ): Response
     {
-
         /** @var CategoryProductDTO $ProductCategoryDTO */
         $ProductCategoryDTO = $Event->getDto(CategoryProductDTO::class);
-
 
         /* Получить ProjectProfileLandings */
 
@@ -65,7 +63,6 @@ final class EditController extends AbstractController
         /* Задать значения для bottom и header */
         if(false !== $projectProfileLandings)
         {
-
             $descriptionCollection = $ProductCategoryDTO->getProject()->getLanding();
 
             /** @var ProjectProfileLandingsResult $projectProfileLanding */

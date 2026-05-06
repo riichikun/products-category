@@ -25,7 +25,6 @@ namespace BaksDev\Products\Category\Controller\Admin;
 
 use BaksDev\Core\Controller\AbstractController;
 use BaksDev\Core\Listeners\Event\Security\RoleSecurity;
-use BaksDev\Products\Category\Entity;
 use BaksDev\Products\Category\Entity as CategoryEntity;
 use BaksDev\Products\Category\Type\Event\CategoryProductEventUid;
 use BaksDev\Products\Category\Type\Parent\ParentCategoryProductUid;
@@ -57,33 +56,28 @@ final class NewController extends AbstractController
         ?CategoryProductEventUid $id = null,
     ): Response
     {
-
-
         $parent = $cat ? new ParentCategoryProductUid($cat->getId()) : null;
-        $Event = $id ? $entityManager->getRepository(CategoryEntity\Event\CategoryProductEvent::class)->find(
-            $id,
-        ) : null;
+        $Event = $id ? $entityManager->getRepository(CategoryEntity\Event\CategoryProductEvent::class)
+            ->find($id) : null;
 
-        $category = new CategoryProductDTO($parent);
+        $CategoryProductDTO = new CategoryProductDTO($parent);
 
         // Копируем данные из события
         if($Event)
         {
-            $Event->getDto($category);
-            // $category->copy();
+            $Event->getDto($CategoryProductDTO);
         }
 
         // Форма добавления
-        $form = $this->createForm(CategoryProductForm::class, $category);
-        $form->handleRequest($request);
+        $form = $this
+            ->createForm(CategoryProductForm::class, $CategoryProductDTO)
+            ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid() && $form->has('Save'))
         {
-            //dd($request->request);
+            $this->refreshTokenForm($form);
 
-            //$this->refreshTokenForm($form);
-
-            $ProductCategory = $handler->handle($category);
+            $ProductCategory = $handler->handle($CategoryProductDTO);
 
             if(true === $ProductCategory)
             {

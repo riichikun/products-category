@@ -33,7 +33,6 @@ use BaksDev\Products\Category\UseCase\Admin\NewEdit\Cover\CategoryProductCoverDT
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Currency\CategoryProductCurrencyDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Domains\CategoryProductDomainDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Info\CategoryProductInfoDTO;
-use BaksDev\Products\Category\UseCase\Admin\NewEdit\Landing\CategoryProductLandingCollectionDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Modify\CategoryProductModifyDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Offers\CategoryProductOffersDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Project\CategoryProductProjectDTO;
@@ -101,9 +100,11 @@ final class CategoryProductDTO implements CategoryProductEventInterface
     #[Assert\Valid]
     private CategoryProductCurrencyDTO $currency;
 
-
-    /** Данные по посадочным блокам для профиля */
-    #[Assert\Valid]
+    /**
+     * Данные по посадочным блокам для профиля
+     *
+     * @note Не включаем валидатор объекта
+     */
     private CategoryProductProjectDTO $project;
 
 

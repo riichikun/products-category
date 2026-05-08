@@ -46,7 +46,6 @@ final class OneCategoryByFieldTypeRepositoryTest extends KernelTestCase
     {
         $OneCategoryByFieldTypeRepository = self::getContainer()->get(OneCategoryByFieldTypeInterface::class);
 
-
         /**
          * @var OneCategoryByFieldTypeRepository $OneCategoryByFieldTypeRepository
          */

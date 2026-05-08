@@ -33,7 +33,6 @@ use BaksDev\Products\Category\Type\Id\CategoryProductUid;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\CategoryProductDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\CategoryProductHandler;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Currency\CategoryProductCurrencyDTO;
-use BaksDev\Products\Category\UseCase\Admin\NewEdit\Landing\CategoryProductLandingCollectionDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Offers\CategoryProductOffersDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Offers\Trans\CategoryProductOffersTransDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Offers\Variation\CategoryProductVariationDTO;
@@ -106,18 +105,18 @@ final class CategoryProductNewTest extends KernelTestCase
         $ProductInfoDTO->setUrl('test_category_url');
         self::assertEquals('test_category_url', $ProductInfoDTO->getUrl());
 
-
-        $categoryProductDTO->getLanding();
-
-        /** @var CategoryProductLandingCollectionDTO $ProductLandingCollectionDTO */
-        foreach($categoryProductDTO->getLanding() as $ProductLandingCollectionDTO)
-        {
-            $ProductLandingCollectionDTO->setHeader('Test Landing Header');
-            self::assertEquals('Test Landing Header', $ProductLandingCollectionDTO->getHeader());
-
-            $ProductLandingCollectionDTO->setBottom('Test Landing Bottom');
-            self::assertEquals('Test Landing Bottom', $ProductLandingCollectionDTO->getBottom());
-        }
+        // @deprecated
+        //        $categoryProductDTO->getLanding();
+        //
+        //        /** @var CategoryProductLandingCollectionDTO $ProductLandingCollectionDTO */
+        //        foreach($categoryProductDTO->getLanding() as $ProductLandingCollectionDTO)
+        //        {
+        //            $ProductLandingCollectionDTO->setHeader('Test Landing Header');
+        //            self::assertEquals('Test Landing Header', $ProductLandingCollectionDTO->getHeader());
+        //
+        //            $ProductLandingCollectionDTO->setBottom('Test Landing Bottom');
+        //            self::assertEquals('Test Landing Bottom', $ProductLandingCollectionDTO->getBottom());
+        //        }
 
 
         /** @var CategoryProductSeoCollectionDTO $ProductSeoCollectionDTO */

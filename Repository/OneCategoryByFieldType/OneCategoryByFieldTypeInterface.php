@@ -27,7 +27,10 @@ namespace BaksDev\Products\Category\Repository\OneCategoryByFieldType;
 
 use BaksDev\Core\Type\Field\InputField;
 use BaksDev\Products\Category\Type\Id\CategoryProductUid;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 
+/** @todo временно, до обновления cars */
+#[Autoconfigure(public: true)]
 interface OneCategoryByFieldTypeInterface
 {
     /**

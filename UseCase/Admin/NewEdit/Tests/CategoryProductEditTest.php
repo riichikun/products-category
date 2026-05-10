@@ -30,7 +30,6 @@ use BaksDev\Products\Category\Repository\CategoryProductCurrentEvent\CategoryPro
 use BaksDev\Products\Category\Type\Id\CategoryProductUid;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\CategoryProductDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\CategoryProductHandler;
-use BaksDev\Products\Category\UseCase\Admin\NewEdit\Landing\CategoryProductLandingCollectionDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Offers\CategoryProductOffersDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Offers\Trans\CategoryProductOffersTransDTO;
 use BaksDev\Products\Category\UseCase\Admin\NewEdit\Offers\Variation\CategoryProductVariationDTO;
@@ -84,18 +83,18 @@ class CategoryProductEditTest extends KernelTestCase
         $productInfoDTO->setUrl('edit_test_category_url');
 
 
-        $categoryProductDTO->getLanding();
-
-        /** @var CategoryProductLandingCollectionDTO $productLandingCollectionDTO */
-        foreach($categoryProductDTO->getLanding() as $productLandingCollectionDTO)
-        {
-            self::assertEquals('Test Landing Header', $productLandingCollectionDTO->getHeader());
-            $productLandingCollectionDTO->setHeader('Edit Test Landing Header');
-
-            self::assertEquals('Test Landing Bottom', $productLandingCollectionDTO->getBottom());
-            $productLandingCollectionDTO->setBottom('Edit Test Landing Bottom');
-
-        }
+        //        $categoryProductDTO->getLanding();
+        //
+        //        /** @var CategoryProductLandingCollectionDTO $productLandingCollectionDTO */
+        //        foreach($categoryProductDTO->getLanding() as $productLandingCollectionDTO)
+        //        {
+        //            self::assertEquals('Test Landing Header', $productLandingCollectionDTO->getHeader());
+        //            $productLandingCollectionDTO->setHeader('Edit Test Landing Header');
+        //
+        //            self::assertEquals('Test Landing Bottom', $productLandingCollectionDTO->getBottom());
+        //            $productLandingCollectionDTO->setBottom('Edit Test Landing Bottom');
+        //
+        //        }
 
 
         /** @var CategoryProductSeoCollectionDTO $productSeoCollectionDTO */

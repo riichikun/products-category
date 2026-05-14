@@ -85,7 +85,7 @@ final class ProjectProfileLandingsRepository implements ProjectProfileLandingsIn
 
 
         /* Задать профиль - PROJECT_PROFILE */
-        if(true === $dbal->bindProjectProfile())
+        if(true === $dbal->isProjectProfile())
         {
             $dbal->andWhere('category_project.profile = :'.$dbal::PROJECT_PROFILE_KEY.' OR category_project.profile IS NULL');
         }
